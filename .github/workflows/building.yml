@@ -1,9 +1,11 @@
 name: SendYourFiles Builder
 on:
-    push:
-        branches: [all]
-    pull_request:
-        branches: [all]
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
 
 env:
     pythonVersion: 3.13.11
