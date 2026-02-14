@@ -6,11 +6,11 @@ import src.back.util.print as print
 from src.back.system.contact import API
 
 def startUp(debugMode):
-    def loadCSS(window):
-        whereCss = os.path.join(os.path.dirname(__file__), "cacaStyle.css")
-        with open(whereCss, "r") as f:
-            css = f.read()
-        window.load_css(css)
+    # def loadCSS(window):
+    #     whereCss = os.path.join(os.path.dirname(__file__), "cacaStyle.css")
+    #     with open(whereCss, "r") as f:
+    #         css = f.read()
+    #     window.load_css(css)
 
     here = os.path.join(os.path.dirname(__file__), "main", "index.html")
     print.debug(f"URL for HTTP is at {here}")
@@ -31,7 +31,7 @@ def startUp(debugMode):
 
     print.debug(f"Using icon at: {iconPath}")
 
-    window = wv.create_window(
+    wv.create_window(
         title="Send Your Files",
         url=here,
         js_api=API(),
@@ -40,7 +40,7 @@ def startUp(debugMode):
         height=600,
     )
 
-    window.events.loaded += loadCSS
+    # window.events.loaded += loadCSS
     wv.start(
         http_server=True,
         private_mode=True,

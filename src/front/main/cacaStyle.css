@@ -83,3 +83,14 @@ body {
 .frame > .textYap {
     text-align: center;
 }
+
+#logs {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    max-width: 100%;
+    overflow-x: auto;
+
+    user-select: text;
+    -webkit-user-select: text;
+    cursor: text;
+}
