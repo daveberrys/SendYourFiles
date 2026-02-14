@@ -4,7 +4,14 @@
     let selectedPath = null;
 
     async function loadPopups() {
-        const popups = ['sendTo.html', 'sendTo-Fallback.html', 'settings.html', 'credits.html'];
+        // Updated to include the extra subfolder!
+        const popups = [
+            'sendTo.html',
+            'sendTo-Fallback.html',
+            'settings.html',
+            'credits.html',
+            'extra/litterboxTime.html'
+        ];
 
         for (const file of popups) {
             try {
@@ -34,7 +41,6 @@
     }
 
     function showPopup(id) {
-        console.log(`Attempting to show: ${id}`);
         if (id === 'platformPopup' && !selectedPath) {
             showPopup('fallbackPopup');
             return;
@@ -43,22 +49,48 @@
         const popup = document.getElementById(id);
         if (popup) {
             popup.style.display = "flex";
-        } else {
-            console.error(`Could not find popup with ID: ${id}`);
         }
     }
 
     function closePopup(id) {
-        console.log(`Attempting to close: ${id}`);
         const popup = document.getElementById(id);
         if (popup) {
             popup.style.display = "none";
-        } else {
-            console.error(`Could not find popup to close: ${id}`);
+        }
+    }
+
+    // This handles the transition specifically for Litterbox
+    function startLitterboxFlow() {
+        closePopup('platformPopup');
+        showPopup('litterboxTimePopup');
+    }
+
+    // This is called when the user finally picks a time
+    async function litterBoxExpire(timeLabel) {
+        closePopup('litterboxTimePopup');
+
+        // Convert "1 Hours" -> "1h", etc. for the API
+        const time = timeLabel.split(' ')[0].toLowerCase() + 'h';
+
+        const logPanel = document.getElementById("logs");
+        logPanel.innerText = `Uploading to Litterbox (${timeLabel})...`;
+
+        try {
+            const result = await window.pywebview.api.uploadTo(selectedPath, 'litterbox', time);
+            logPanel.innerText = `Success! Link: ${result}`;
+        } catch (e) {
+            logPanel.innerText = "Error: Upload failed.";
+            console.error(e);
         }
     }
 
     async function triggerUpload(platform) {
+        // If it's litterbox, go to the next popup instead!
+        if (platform === 'litterbox') {
+            startLitterboxFlow();
+            return;
+        }
+
         closePopup('platformPopup');
         const logPanel = document.getElementById("logs");
         logPanel.innerText = `Preparing upload to ${platform}...`;
