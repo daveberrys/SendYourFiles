@@ -1,0 +1,85 @@
+:root {
+    --backgroundColor: #353535;
+    --frameColor: #292929;
+    --elemColor: #1e1e1e;
+    --elemHoverColor: #2e2e2e;
+
+    --textColor: #ffffff;
+}
+
+body {
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+    font-family: sans-serif
+}
+
+/* ELEMENTS */
+
+.frame {
+    background-color: var(--frameColor);
+    border-radius: 8px;
+
+    width: auto;
+    height: max-content;
+    padding: 10px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.anotherElem {
+    background-color: var(--elemColor);
+    border-radius: 8px;
+
+    width: auto;
+    height: max-content;
+    padding: 10px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    background-color: var(--elemColor);
+    color: var(--textColor);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: max-content;
+    height: max-content;
+    padding: 10px;
+    border-radius: 10px;
+} .button:hover {
+    background-color: var(--elemHoverColor);
+    cursor: pointer;
+}
+
+/* OTHER */
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.xyCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} 
+
+.bigText {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.frame > .textYap {
+    text-align: center;
+}
