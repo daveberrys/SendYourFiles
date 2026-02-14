@@ -1,6 +1,14 @@
-# Send Your Files Project
-Wanna send your silly files above 10 mb? Here's an app for you! Native for Windows, Linux, MacOS and Android! <br>
-![Made with Python](https://img.shields.io/badge/Made%20with-Python-3776AB?style=flat-square&logo=python&logoColor=white)
+<div align="center">
+  <img src="assets/icon/SendYourFiles.png" width="100" height="100">
+  <h1>Send Your Files Project</h1>
+  <p>Wanna send your silly files above 10 mb? Here's an app for you! Native for Windows, Linux, MacOS and Android!</p>
+  <img src="https://img.shields.io/badge/Made%20with-Python-3776AB?style=flat-square&logo=python&logoColor=white">
+</div>
+
+# Preview
+<img src="readme/preview/mainState.png" width="300" alt="Main State Preview">
+<img src="readme/preview/uploadTo.png" width="300" alt="Upload To Preview">
+<img src="readme/preview/credits.png" width="300" alt="Credits Preview">
 
 # Why did we make this?
 We didn't like Discord's 10 mb restriction. We usually have big files, like zips, videos and such.
@@ -21,7 +29,7 @@ It gives us more motivation to keep continuing this project and making this app 
 # Contributors
 ## Lead devs
 - Daveberry
-  - Programmer
+  - Programmer (Front & Back)
   - UI Designing
 - Runyra
-  - Programmer
+  - Nothing at all. (for now lmao)

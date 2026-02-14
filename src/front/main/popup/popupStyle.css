@@ -59,4 +59,8 @@
     border-radius: 8px;
     max-width: 100%;
     overflow-x: auto;
+
+    user-select: text;
+    -webkit-user-select: text;
+    cursor: text;
 }

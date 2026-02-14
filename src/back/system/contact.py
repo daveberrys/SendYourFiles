@@ -1,13 +1,15 @@
 import webview
+import os
 from src.back.api.sendingFile import catbox, litterbox, buzzheavier
-
 
 class API:
     def pickFile(self):
         window = webview.active_window()
-        file_path = window.create_file_dialog(webview.OPEN_DIALOG)
+        file_path = window.create_file_dialog(webview.FileDialog.OPEN)
         if file_path:
-            return file_path[0]
+            path = file_path[0]
+            size = os.path.getsize(path)
+            return {"path": path, "size": size}
         return None
 
     def uploadTo(self, path, platform, duration="1h"):
