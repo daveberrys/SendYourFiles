@@ -44,9 +44,10 @@ jobs:
               run: |
                 sudo apt update
                 sudo apt install -y \
-                  libcairo2-dev \
+                  build-essential \
                   pkg-config \
                   python3-dev \
+                  libcairo2-dev \
                   libgirepository1.0-dev \
                   gcc \
                   gir1.2-gtk-3.0 \
