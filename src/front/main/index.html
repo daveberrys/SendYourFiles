@@ -2,7 +2,7 @@
 
 <script>
     let selectedPath = null;
-    let selectedSize = 0; // In Bytes
+    let selectedSize = 0; // in bytes
 
     async function loadPopups() {
         const popups = [
@@ -28,7 +28,6 @@
     }
 
     window.addEventListener('DOMContentLoaded', loadPopups);
-
     async function chooseFile() {
         try {
             const data = await window.pywebview.api.pickFile();
@@ -70,9 +69,9 @@
         showPopup('litterboxTimePopup');
     }
 
-    // THE ROBUST COPY FUNCTION
+    // THE ROBUST COPY FUNCTION (stupid, but effective)
     function copyToClipboard(text) {
-        // Fallback method for non-HTTPS/local contexts
+        // fallback method for non-HTTPS/local contexts
         const textArea = document.createElement("textarea");
         textArea.value = text;
         document.body.appendChild(textArea);
@@ -91,11 +90,11 @@
     async function handleUploadSuccess(result) {
         const logPanel = document.getElementById("logs");
 
-        // Check if the result is actually a URL (starts with http)
+        // check if the result is actually a URL (starts with http)
         if (result && result.startsWith("http")) {
             logPanel.innerText = `Success! (Copied!)\n${result}`;
 
-            // Try modern method first, then fallback
+            // try modern method first, then fallback
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 try {
                     await navigator.clipboard.writeText(result);
@@ -106,7 +105,7 @@
                 copyToClipboard(result);
             }
         } else {
-            // It's probably an error message from our Python logic
+            // it's probably an error message from our Python logic
             logPanel.innerText = result;
         }
     }

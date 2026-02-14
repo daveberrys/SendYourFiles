@@ -5,7 +5,6 @@ import sys
 import src.back.util.print as print
 from src.back.system.contact import API
 
-
 def startUp(debugMode):
     def loadCSS(window):
         whereCss = os.path.join(os.path.dirname(__file__), "cacaStyle.css")

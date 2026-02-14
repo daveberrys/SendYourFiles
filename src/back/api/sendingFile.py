@@ -1,7 +1,9 @@
 import requests
 import os
 
-# More aggressive browser spoofing
+# main reason why this is here:
+# 1. catbox for some reason need this
+# 2. this is probably required
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
     "Accept": "*/*",
