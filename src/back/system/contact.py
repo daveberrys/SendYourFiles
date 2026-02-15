@@ -1,6 +1,8 @@
 import webview
 import os
+
 from src.back.api.sendingFile import catbox, litterbox, buzzheavier
+from src.back.api.checkForUpdate import isUpdateAvailable
 
 class API:
     def pickFile(self):
@@ -20,3 +22,11 @@ class API:
         elif platform == "buzzheavier":
             return buzzheavier(path)
         return "Unknown platform"
+
+    def checkForUpdates(self):
+        try:
+            with open("version.txt", "r") as f:
+                currentVersion = f.read().strip()
+            return isUpdateAvailable(currentVersion)
+        except Exception as e:
+            return f"Error: {str(e)}"

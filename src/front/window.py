@@ -12,6 +12,8 @@ def startUp(debugMode):
     #         css = f.read()
     #     window.load_css(css)
 
+    API.checkForUpdates(API())
+
     here = os.path.join(os.path.dirname(__file__), "main", "index.html")
     print.debug(f"URL for HTTP is at {here}")
 

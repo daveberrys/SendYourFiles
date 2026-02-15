@@ -78,6 +78,9 @@ body {
 .bigText {
     font-weight: bold;
     font-size: 30px;
+} .smallText {
+    color: gray;
+    font-size: 12px;
 }
 
 .frame > .textYap {

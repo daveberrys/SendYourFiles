@@ -1,0 +1,14 @@
+<div id="newUpdateAvailablePopup" class="popup-overlay" onclick="if(event.target == this) closePopup('newUpdateAvailablePopup')">
+    <div class="popup-content">
+        <h3>New Update Available!</h3>
+        <p>A new update is available! We'd recommend downloading the latest for better stability.</p>
+        <p id="updateVersionText"></p>
+
+        <div class="flex" style="gap: 5px;">
+            <a id="updateDownloadLink" target="_blank" style="display: contents">
+                <div class="button" onclick="closePopup('newUpdateAvailablePopup')">Download</div>
+            </a>
+            <div class="button" onclick="closePopup('newUpdateAvailablePopup')">Cancel</div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="popup/popupStyle.css">
-<link rel="stylesheet" href="cacaStyle.css">
+<link rel="stylesheet" href="css/popupStyle.css">
+<link rel="stylesheet" href="css/cacaStyle.css">
 
 <script>
     let selectedPath = null;
@@ -8,12 +8,16 @@
     async function loadPopups() {
         const popups = [
             'sendTo.html',
-            'sendTo-Fallback.html',
             'settings.html',
             'credits.html',
+
+            'extra/sendTo-Fallback.html',
             'extra/litterboxTime.html',
             'extra/limiter/catbox.html',
-            'extra/limiter/litterbox.html'
+            'extra/limiter/litterbox.html',
+
+            'extra/updaters/newUpdateAvailable.html',
+            'extra/updaters/failedToFetch.html',
         ];
 
         for (const file of popups) {
@@ -28,7 +32,12 @@
         }
     }
 
-    window.addEventListener('DOMContentLoaded', loadPopups);
+    window.addEventListener('DOMContentLoaded', () => {
+        loadPopups().then(() => {
+            checkUpdates(); // Call this AFTER popups are loaded
+        });
+    });
+
     async function chooseFile() {
         try {
             const data = await window.pywebview.api.pickFile();
@@ -154,6 +163,29 @@
             await handleUploadSuccess(result);
         } catch (e) {
             logPanel.innerText = "Error: Could not reach the server.";
+        }
+    }
+
+    // I don't even wanna explain how this works dude
+    async function checkUpdates() {
+        try {
+            const result = await window.pywebview.api.checkForUpdates();
+
+            if (result.status === "error") {
+                showPopup('failedToFetchPopup');
+            } else if (result.status === "success" && result.available) {
+                const downloadLink = document.getElementById('updateDownloadLink');
+                if (downloadLink) {
+                    downloadLink.href = `https://github.com/daveberrys/SendYourFiles/releases/tag/${result.latest}`;
+                }
+                const versionText = document.getElementById('updateVersionText');
+                if (versionText) {
+                    versionText.innerText = `Latest version: ${result.latest}`;
+                }
+                showPopup('newUpdateAvailablePopup');
+            }
+        } catch (e) {
+            console.error("Javascript failed to call update check:", e);
         }
     }
 </script>
