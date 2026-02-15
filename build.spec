@@ -18,14 +18,18 @@ a = Analysis(
   pathex=[],
   binaries=[],
   datas=[
-    ('src', 'src'),       # Include your UI and Logic
-    ('assets', 'assets'), # Include your Icons
+    ('src', 'src'),
+    ('assets', 'assets'),
+    ('version.txt', '.'),
   ],
   hiddenimports=[
-    'webview.platforms.winforms', # For Windows
-    'webview.platforms.cocoa',    # For macOS
-    'webview.platforms.qt',       # For Linux
-    'clr',                        # Required for Windows builds
+    'webview.platforms.winforms',
+    'webview.platforms.cocoa',
+    'webview.platforms.qt',
+    'clr',
+    'desktop_notifier',
+    'desktop_notifier.resources',
+    'pystray._win32',
   ],
   hookspath=[],
   hooksconfig={},
