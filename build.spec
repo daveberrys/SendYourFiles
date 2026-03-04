@@ -14,12 +14,13 @@ else:
 
 linuxData = []
 linuxHiddenImports = []
-if sys.platform.startswith('linux'):
+if sys.platform == "linux":
+  typelib_base = '/usr/lib/x86_64-linux-gnu/girepository-1.0/'
   linuxData = [
-    ('/usr/lib/x86_64-linux-gnu/girepository-1.0/DBus-1.0.typelib', 'gi_typelibs/DBus-1.0.typelib'),
-    ('/usr/lib/x86_64-linux-gnu/girepository-1.0/AyatanaAppIndicator3-0.1.typelib', 'gi_typelibs/AyatanaAppIndicator3-0.1.typelib'),
-    ('/usr/lib/x86_64-linux-gnu/girepository-1.0/Gtk-3.0.typelib', 'gi_typelibs/Gtk-3.0.typelib'),
-    ('/usr/lib/x86_64-linux-gnu/girepository-1.0/GObject-2.0.typelib', 'gi_typelibs/GObject-2.0.typelib'),
+    (typelib_base + 'DBus-1.0.typelib',                 'gi_typelibs'),
+    (typelib_base + 'AyatanaAppIndicator3-0.1.typelib', 'gi_typelibs'),
+    (typelib_base + 'Gtk-3.0.typelib',                  'gi_typelibs'),
+    (typelib_base + 'GObject-2.0.typelib',              'gi_typelibs'),
   ]
   
   linuxHiddenImports = [

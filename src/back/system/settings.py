@@ -2,18 +2,16 @@ import os
 import json
 
 from sys import platform
-
 import src.back.util.print as print
 
 appID = "dev.pages.codedave.SendYourFiles"
-
 
 class Sys:
     def getOSpath(self):
         if platform == "win32":
             configPath = os.path.join(os.getenv("APPDATA"), appID)
         elif platform == "linux":
-            configPath = os.path.join(os.getenv("XDG_CONFIG_HOME"), appID)
+            configPath = os.path.join(os.getenv("HOME"), ".config", appID)
         elif platform == "darwin":
             configPath = os.path.join(
                 os.getenv("HOME"), "Library", "Application Support", appID
