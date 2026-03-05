@@ -44,7 +44,7 @@ In **Linux**, it's a bit of a tricky set up.
 
 If you tried to open the app with the required dependencies, it'll say something like `webview.errors.WebViewException: You must have either QT or GTK with Python extensions installed in order to use pywebview.` which won't ever open the app unless you have GTK webview.
 
-You'll need `webkitgtk6.0` (or maybe a lower version?), which you have to find in your operating system's package manager.
+We might have to switch to Qt, as it is stable enough. Although, by using Qt, we'd have to sacrifice RAM and Storage.
 
 ## MACOS
 Just open the app and you're done. No need to download anything else other than the app.
@@ -101,3 +101,21 @@ python3 -m venv venv
 venv/Scripts/pip install -r requirements.txt
 venv/Scripts/pyinstaller build.spec
 ```
+
+#
+
+# Questions
+- **Q: Will you guys ever compile for web version?**
+- A: Probably. [I've](https://codedave.pages.dev) been thinking about it and [I](https://codedave.pages.dev) probably will. [I'd](https://codedave.pages.dev) do something like using vercel or cloudflare to host the website. 
+>
+- **Q: Why make it native?**
+- A: [I](https://codedave.pages.dev) never liked the idea of just opening in your browser, getting your file and uploading it. [I](https://codedave.pages.dev) liked the idea of where you just open from your system tray and upload it.
+>
+- **Q: Why is it made in python with pywebview?**
+- A: 'Cause, it's easy and simple. [I](https://codedave.pages.dev) don't want to make it in rust since... It's just an app that uploads things. And pywebview? [I](https://codedave.pages.dev) like using HTML, CSS and JS/TS. [I](https://codedave.pages.dev) feel comfortable with my workflow.
+>
+- **Q: I want to enhance this app.**
+- A: Read [Contributing](CONTRIBUTING.md) first and then you can submit a PR.
+>
+- **Q: Why is there no mobile version of this app yet?**
+- A: There probably be none. [I](https://codedave.pages.dev) wanted to make one, but honestly, it'll just take forever to implement mobile.
